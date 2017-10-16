@@ -33,5 +33,6 @@ RUN (curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID
                 docker-ce \
         && adduser ${USER_NAME} docker
 
+ENV USER=${USER_NAME}
 WORKDIR /home/${USER_NAME}
 User ${USER_NAME}

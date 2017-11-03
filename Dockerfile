@@ -14,7 +14,7 @@ RUN apt-get update --quiet --quiet \
                 sudo
 
 RUN useradd --comment 'Andocker Development Account' \
-                --home /home/${USER_NAME} --no-create-home \
+                --home /home/${USER_NAME} --create-home \
                 --shell /bin/bash \
                 --uid ${USER_UID} \
                 ${USER_NAME} \

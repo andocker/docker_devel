@@ -1,0 +1,31 @@
+sudo: required
+services:
+- docker
+
+env:
+  matrix:
+  - SUITE=artful
+  - SUITE=buster
+  - SUITE=stretch
+  - SUITE=trusty
+  - SUITE=xenial
+
+matrix:
+  fast_finish: true
+  allow_failures:
+  - env: SUITE=artful
+  - env: SUITE=buster
+
+before_install:
+- curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=$(dpkg-architecture -qDEB_BUILD_ARCH)] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable"
+- sudo apt-get update
+- sudo apt-get --yes install docker-ce
+
+script:
+- |
+  docker build \
+    --tag rekcodna/devel:${SUITE} \
+    --build-arg BASE_IMAGE_SUITE=${SUITE} \
+    --build-arg GROUP_DOCKER_GID=$(cat /etc/group | grep ^docker | cut -d: -f3) \
+    .

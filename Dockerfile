@@ -25,7 +25,7 @@ RUN useradd --comment 'Andocker Development Account' \
 
 RUN (curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | \
                 sudo apt-key add -) \
-        && (echo "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") ${BASE_IMAGE_SUITE} $(case ${BASE_IMAGE_SUITE} in artful|buster) echo test;; *) echo stable;; esac)" | \
+        && (echo "deb [arch=$(dpkg-architecture -qDEB_BUILD_ARCH)] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") ${BASE_IMAGE_SUITE} $(case ${BASE_IMAGE_SUITE} in artful|buster) echo test;; *) echo stable;; esac)" | \
                 tee /etc/apt/sources.list.d/download.docker.com.list) \
         && apt-get update --quiet --quiet \
         && addgroup --system --gid ${GROUP_DOCKER_GID} docker \

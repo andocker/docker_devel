@@ -27,3 +27,6 @@ script:
     --build-arg BASE_IMAGE_SUITE=${SUITE} \
     --build-arg GROUP_DOCKER_GID=$(cat /etc/group | grep ^docker | cut -d: -f3) \
     .
+notifications:
+  slack:
+    secure: vLuMASth52ucPCRxbojCCuh6wa2+IL5cdF+//aioyGCO9ccLypwPHvz3JWrnE8tB7wF4Q11IGnWXSZjCxpXGzVMSw43vufbkSWYOzeu8VP/MFQ1Q4Qq4dsfJ/XEK9B4p6ByTXzReiguha4/VksrNE12yQL4NpSr9EJRLcoDoQqaEdZfmeiTxFCn9tVKl8+y6uwJgqdW5AEzEkk5p5dnFKt2ZHk/uxyU3jojA1CjVQAhE/wRRN1TO7TD+/AhZsRHN6wMzZ1o6nzNvT8JnfR6keiQBYzhAXFync4zSD/MD5RoX7VEOXfGxRoC1Pq9SquwIjh7db6Rmf3dNynVbyS6MQhm3aZ4uKW5jKMW6hkzXUBvoqE/SEioEvfF84EpDoJN1FMBvQvqcoTwBsQ4BXb6wsC7M8WCVjFlG7hBb/o1FPKB5uyNnvfCSO0ZysRVOgPiIVjuF51ooL3c/fGlK3WheWmDqagkdLxLz3bko3LfpXVskA5VlHsH8Z+LiDb/6XK0p+8369BLDb5/ghKRpUVlipj4k/ld3kMYVe6Jh+eZnNRdZ9K4Wabv1EiDLGSs9wykiKQWH9YU6I7szTYcfIbSR5JMRKr1bGg5wZhfq/KAd3uLPyldWBRNyl561YTaWQJCTaVbuI1nq0carywmaTU8cv2lfSlF8SN7sJnIW1cB81Tw=
